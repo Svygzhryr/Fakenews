@@ -28,10 +28,10 @@ export default function Home() {
     <div className="grid grid-rows-3 grid-cols-3 gap-4 p-4">
       {posts.map((post) => (
         <div
-          className="bg-neutral-900 p-4 hover:cursor-pointer hover:bg-neutral-800 transition-all flex flex-col justify-between"
+          className="p-4 hover:cursor-pointer hover:bg-secondary transition-all flex flex-col justify-between text-sm"
           key={post.id}
         >
-          <h2 className="text-xl text-red-300">{post.title}</h2>
+          <h2 className="text-xl text-rose-500">{post.title}</h2>
           <p className="my-4">{post.text}</p>
           <h3>{`${post.createdDate}`.slice(0, 10)}</h3>
         </div>
