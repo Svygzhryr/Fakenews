@@ -1,6 +1,11 @@
 export function generateId() {
-  return `${Math.floor(Date.now() + Math.random())}`
+  return `${Date.now() + Math.random()}`
     .split("")
     .reverse()
-    .join("");
+    .join("")
+    .replace(".", "");
+}
+
+export function getIdFromUrl(url: string) {
+  return url.search(/(\d*)$/).toString();
 }
