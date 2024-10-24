@@ -12,6 +12,12 @@ A small fake (joke) news api powered by AI.
 
 And don't forget to set your .env.local according to an example
 
+Also you can seed database with some entries with `npx prisma db seed`
+
 ## Usage
 
 `npx prisma studio` to view database entries.
+
+## Api usage
+
+`NEXT_PUBLIC_API_URL/api/posts` endpoint for sending requests
