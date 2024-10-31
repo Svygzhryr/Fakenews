@@ -1,7 +1,8 @@
 import { PostDto } from "../../../types/types";
-import { getIdFromUrl } from "../../../utils";
 import prisma from "../../prisma/prisma";
 import { NextResponse } from "next/server";
+import { errors } from "../../utils/errors";
+import { getIdFromUrl } from "../../utils";
 
 export async function GET(request: Request) {
   let id = getIdFromUrl(request.url);
@@ -22,8 +23,7 @@ export async function PUT(request: Request) {
   title = title.trim();
   text = text.trim();
 
-  if (!title || !text)
-    return NextResponse.json({ error: "InvalidBody" }, { status: 400 });
+  if (!title || !text) return NextResponse.json(errors[400]);
 
   return NextResponse.json(
     await prisma.posts.update({

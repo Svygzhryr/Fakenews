@@ -1,5 +1,5 @@
 import { Posts } from "../../types/types";
-import { generateId } from "../../utils";
+import { generateId } from "../utils";
 import prisma from "./prisma";
 
 const postsData: Posts[] = [
