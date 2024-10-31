@@ -1,7 +1,8 @@
 import { PostDto } from "../../types/types";
-import { generateId } from "../../utils";
 import prisma from "../prisma/prisma";
 import { NextResponse } from "next/server";
+import { generateId } from "../utils";
+import { errors } from "../utils/errors";
 
 export async function GET() {
   return NextResponse.json(await prisma.posts.findMany());
@@ -15,8 +16,7 @@ export async function POST(request: Request) {
 
   // ещё много валидации нужно доделать будет
   // это касается и других роутов
-  if (!title || !text)
-    return NextResponse.json({ error: "InvalidBody" }, { status: 400 });
+  if (!title || !text) return NextResponse.json(errors[400]);
 
   return NextResponse.json(
     await prisma.posts.create({

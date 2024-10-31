@@ -7,5 +7,5 @@ export function generateId() {
 }
 
 export function getIdFromUrl(url: string) {
-  return url.search(/(\d*)$/).toString();
+  return /(\d*)$/.exec(url)![0];
 }
