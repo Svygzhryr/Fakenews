@@ -20,42 +20,46 @@ export function Header() {
 
   useEffect(()=>{
     document.addEventListener('mousedown', handleClick)
-
     return () => {
       document.removeEventListener('mousedown', handleClick)
     }
-
   }, [])
  
   return (
-    <header className="relative h-20 px-8 flex justify-between bg-secondary items-center">
+    <header className="relative h-20 px-8 flex justify-between bg-secondary items-center ">
       <Link href="/">
         <h1 className="text-4xl">П - <b className="text-rose-500">Ж</b></h1>
       </Link>
-      <div className="flex gap-12">
-        <button onClick={toggleSearch}>
-          <Image src={searchIcon} alt="search post"/>
-        </button>
+      <div className="flex gap-6 z-20">
+        {isSearch 
+          ? 
+          <SearchInput myRef={searchRef} toggleSearch={toggleSearch}/> 
+          : 
+          <button onClick={toggleSearch}>
+              <Image src={searchIcon} alt="search post"/>
+          </button>
+        }
         <button className="text-2xl hover:text-rose-500 transition">Предложить</button>
       </div>
-      {isSearch && <SearchInput myRef={searchRef} toggleSearch={toggleSearch}/>}
+ 
     </header>
   );
 }
 
 function SearchInput({ myRef, toggleSearch }) {
   return (
-    <div ref={myRef} className="absolute top-full left-0 py-4  bg-inherit  ">
-      <div className="mx-auto w-fit fixed inset-0 top-10 z-10 bg-secondary rounded-[20px] h-fit p-10 ">
-          <p className="text-3xl">Поиск по сайту</p>
-          <div className="mt-4 flex gap-[20px] items-center">
+    <div ref={myRef} className="bg-inherit ">
+      <div className="mx-auto w-fit h-fit ">
+          <div className=" flex items-center">
+            <Image src={searchIcon} alt="search post"/>
             <input 
-              className="px-5 py-3 w-[700px] text-3xl bg-main rounded-[20px] border-main border-2 outline-none
-              focus:border-b-hover placeholder:text-rose-500"   
-              type="text" placeholder="..."/>
+              className="ms-4 px-4 py-2 w-[300px] text-xl bg-main rounded-[20px] border-main border-2 outline-none
+              focus:border-b-hover "   
+              type="text" placeholder="поиск"
+            />
             <button 
               onClick={toggleSearch} 
-              className="w-[46px] h-[46px] bg-main rounded-full text-3xl 
+              className="w-[46px] h-[46px]  text-xl 
                 text-white hover:text-rose-500 active:text-rose-200 transition"
             >X</button>
           </div>
