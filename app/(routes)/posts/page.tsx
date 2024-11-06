@@ -32,7 +32,7 @@ export default function Home() {
       {posts.map((post) => (
         <Link
           href={`/posts/${post.id}`}
-          className="max-h-96 rounded-xl hover:cursor-pointer bg-secondary hover: transition-all  text-sm"
+          className="max-h-96 rounded-xl hover:cursor-pointer bg-secondary hover:bg-neutral-800 transition-all  text-sm"
           key={post.id}
         >
           <Image
